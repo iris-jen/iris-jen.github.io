@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="container-fluid">
         {/* Navbar Brand */}
         <Link className="navbar-brand" href="/">
-          Iris Jennison
+        🌸💜
         </Link>
 
         {/* Toggle Button for Mobile View */}
