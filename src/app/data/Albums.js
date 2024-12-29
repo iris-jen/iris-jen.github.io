@@ -21,7 +21,7 @@ const albums = [
     }
   },
   {
-    id: 'darts_stones',
+    id: 'bent_cathode',
     name: 'Bent Cathode',
     recordedYear: 2024,
     writtenYear: 2014,
@@ -29,7 +29,7 @@ const albums = [
     details: 'Recent recordings of a few songs from BADCROWVIBES times',
     tracks: [
       { title: 'Fumble', file: "music/bent_cathode/Fumble.mp3" },
-      { title: 'Honesty', file: "music/bent_cathode/Honesty.mp3" },
+      { title: 'Snowdrifts', file: "music/bent_cathode/Snowdrifts.mp3" },
       { title: 'Channels', file: "music/bent_cathode/Channels.mp3" },
       { title: 'Shipwrecks', file: "music/bent_cathode/Shipwrecks.mp3" },
       { title: 'Honesty', file: "music/bent_cathode/Honesty.mp3" },
