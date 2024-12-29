@@ -6,6 +6,10 @@
   --card-text: #ededed;
   --button-hover: #ff1493;
   --link-hover: #ff69b4;
+
+  /* 🌸 Iris and Grass Colors */
+  --iris-color: #ff69b4; /* Fuchsia for Iris */
+  --grass-color: #9932cc; /* Purple for Grass */
 }
 
 /* 🌑 Body */
@@ -49,7 +53,16 @@ body {
   overflow: hidden;
   border-radius: 12px;
   background: #000;
-  box-shadow: 0 0 20px var(--foreground);
+  box-shadow: none; /* Removed border glow */
+}
+
+/* 🌿 Specific Colors for Iris and Grass in Canvas */
+.canvas-iris {
+  color: var(--iris-color); /* Fuchsia for Iris */
+}
+
+.canvas-grass {
+  color: var(--grass-color); /* Purple for Grass */
 }
 
 /* 🌟 Buttons - Social Icons */
@@ -122,19 +135,6 @@ a.text-decoration-none:hover {
   font-weight: bold;
 }
 
-
-
-.btn-outline-light {
-  color: var(--card-text) !important;
-  border-color: var(--foreground) !important;
-}
-
-.btn-outline-light:hover {
-  background-color: var(--button-hover) !important;
-  color: #fff !important;
-  border-color: var(--button-hover) !important;
-}
-
 /* 🌟 Navbar Toggle Button */
 .navbar-toggler {
   border: 1px solid var(--foreground);
@@ -157,6 +157,8 @@ a.text-decoration-none:hover {
 
 /* 🌟 Track List Styling */
 .list-group-item {
+  background-color: var(--card-bg) !important;
+  color: var(--card-text) !important;
   border: none;
   font-size: 0.9rem;
   padding: 8px 12px;
@@ -166,6 +168,8 @@ a.text-decoration-none:hover {
 }
 
 .list-group-item.bg-primary {
+  background-color: var(--button-hover) !important;
+  color: #fff !important;
   font-weight: bold;
 }
 
@@ -178,18 +182,6 @@ audio {
 /* 🌟 Track Title Text */
 .list-group-item span {
   color: var(--card-text) !important;
-}
-
-/* 🌟 Button Fix */
-.btn-outline-light {
-  color: var(--card-text) !important;
-  border-color: var(--foreground) !important;
-}
-
-.btn-outline-light:hover {
-  background-color: var(--button-hover) !important;
-  color: #fff !important;
-  border-color: var(--button-hover) !important;
 }
 
 /* 🌟 Modal Styling */
@@ -207,6 +199,18 @@ audio {
 
 .modal-body p {
   color: var(--card-text) !important;
+}
+
+/* 🌟 Button Fix */
+.btn-outline-light {
+  color: var(--card-text) !important;
+  border-color: var(--foreground) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--button-hover) !important;
+  color: #fff !important;
+  border-color: var(--button-hover) !important;
 }
 
 /* 🌟 Track List Item Colors */

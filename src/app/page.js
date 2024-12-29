@@ -9,12 +9,7 @@ export default function Home() {
 
       <div className="container text-center mt-5">
 
-        <div className="iris-container mx-auto mb-5">
-          <TitleBlock />
-        </div>
-
-
-        <div className="card shadow-lg mb-5 border-0 text-white bg-dark">
+      <div className="card shadow-lg mb-5 border-0 text-white bg-dark">
           <div className="card-body text-center p-4">
             <h5 className="card-title fw-bold">Hi!</h5>
             <p className="card-text">
@@ -32,6 +27,10 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+
+        <div className="iris-container mx-auto mb-5">
+          <TitleBlock />
         </div>
 
         {/* Social Links Card */}
@@ -55,7 +54,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-4 mb-5">
               <a href="https://github.com/iris-jen/iris-jen.github.io" target="_blank" className="text-decoration-none fw-bold text-light">
-                👉 Code for this Website 👈
+                Source Code for this Website (Next.js) 
               </a>
             </div>
           </div>
