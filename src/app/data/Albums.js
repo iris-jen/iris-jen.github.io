@@ -9,9 +9,9 @@ const albums = [
       cover: 'music/darts_stones/cover.png',
       details: 'hotdog',
       tracks: [
-        'Stones',
-        'Darts',
-        'City (Get Bent Cover)',
+        {title:'Stones', file :"music/darts_stones/Stones.mp3"},
+        {title:'Darts', file : "music/darts_stones/Darts.mp3"},
+        {title:'City (Get Bent Cover)', file:"music/darts_stones/City.mp3"},
       ],
       links: {
         appleMusic: 'https://music.apple.com/album1',

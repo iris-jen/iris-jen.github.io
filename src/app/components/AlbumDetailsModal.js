@@ -85,15 +85,15 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
                     <li
                       key={index}
                       className={`list-group-item d-flex justify-content-between align-items-center ${
-                        currentTrack === track ? 'bg-primary text-white' : 'bg-transparent'
+                        currentTrack === track.title ? 'bg-primary text-white' : 'bg-transparent'
                       }`}
                     >
-                      {track}
+                      {track.title}
                       <button
-                        onClick={() => playTrack(track)}
+                        onClick={() => playTrack(track.file)}
                         className="btn btn-sm btn-outline-light"
                       >
-                        {currentTrack === track && isPlaying ? (
+                        {currentTrack === track.file && isPlaying ? (
                           <i className="bi bi-pause-fill"></i>
                         ) : (
                           <i className="bi bi-play-fill"></i>
