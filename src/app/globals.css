@@ -157,3 +157,34 @@ a.text-decoration-none:hover {
 .navbar-toggler-icon {
   filter: invert(80%);
 }
+
+/* 🌟 Track List */
+.list-group-item {
+  border: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+
+.list-group-item:not(:last-child) {
+  border-bottom: 1px solid var(--foreground);
+}
+
+/* 🌟 Track List Styling */
+.list-group-item {
+  border: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item.bg-primary {
+  font-weight: bold;
+}
+
+/* 🌟 Media Player */
+audio {
+  margin-top: 10px;
+  width: 100%;
+}

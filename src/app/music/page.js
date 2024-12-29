@@ -1,10 +1,43 @@
-import Image from "next/image";
-import Navbar from '../components/navbar';
+// pages/music.js
+
+'use client';
+
+import React, { useState } from 'react';
+
+import AlbumCard from '../components/AlbumCard';
+import AlbumDetailsModal from '../components/AlbumDetailsModal';
+import albums from '../data/Albums';
 
 export default function Music() {
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = (album) => {
+    setSelectedAlbum(album);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setSelectedAlbum(null);
+    setShowModal(false);
+  };
+
   return (
-    <div>
- <h1>music</h1>
-    </div>
+    <>
+  
+      <div className="container mt-5">
+        <h1 className="text-center text-primary mb-4">🎵 Music Collection</h1>
+        <div className="row">
+          {albums.map((album) => (
+            <div key={album.id} className="col-md-6 col-lg-4 mb-4">
+              <AlbumCard album={album} onClick={openModal} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Modal */}
+      <AlbumDetailsModal show={showModal} onClose={closeModal} album={selectedAlbum} />
+    </>
   );
 }

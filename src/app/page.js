@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Navbar from './components/navbar';
-import SpinningIris from './components/iris';
+
+import TitleBlock from './components/AnimatedIris';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <div className="container text-center mt-5">
 
         <div className="iris-container mx-auto mb-5">
-          <SpinningIris />
+          <TitleBlock />
         </div>
 
 
@@ -45,7 +45,7 @@ export default function Home() {
               <a href="https://www.instagram.com/iris_jennison_/" target="_blank" className="btn btn-outline-light rounded-circle p-3">
                 <i className="bi bi-instagram"></i>
               </a>
-              <a href="https://www.facebook.com/people/Iris-Jennison-Music" target="_blank" className="btn btn-outline-light rounded-circle p-3">
+              <a href="https://www.facebook.com/people/Iris-Jennison-Music/61571030457155/" target="_blank" className="btn btn-outline-light rounded-circle p-3">
                 <i className="bi bi-facebook"></i>
               </a>
               <a href="https://discordapp.com/users/_iris_j" target="_blank" className="btn btn-outline-light rounded-circle p-3">
@@ -60,9 +60,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-    
-   
     </>
   );
 }

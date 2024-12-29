@@ -17,7 +17,7 @@ export default function Navbar() {
         {/* Navbar Brand with Favicon */}
         <Link className="navbar-brand d-flex align-items-center" href="/">
           <Image
-            src="/favicon.ico"
+            src="/logo.ico"
             alt="Logo"
             width={32}
             height={32}
@@ -52,30 +52,11 @@ export default function Navbar() {
                 Music
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/projects">
-                Projects
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/contact">
-                Contact
-              </Link>
-            </li>
+     
+          
           </ul>
 
-          {/* Search Form */}
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2 bg-dark text-light border-1"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-light" type="submit">
-              Search
-            </button>
-          </form>
+         
         </div>
       </div>
     </nav>
