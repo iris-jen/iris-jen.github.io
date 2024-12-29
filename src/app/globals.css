@@ -1,18 +1,159 @@
-
+/* 🌑 Global Dark Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ff69b4;
+  --card-bg: #171717;
+  --card-text: #ededed;
+  --button-hover: #ff1493;
+  --link-hover: #ff69b4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 🌑 Body */
+body {
+  background: var(--background);
+  color: var(--card-text);
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* 🌟 Navbar Styling */
+.navbar {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--foreground);
+}
+
+.navbar a {
+  color: var(--card-text);
+}
+
+.navbar a:hover {
+  color: var(--button-hover);
+}
+
+/* 🌺 Cards */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border: 1px solid var(--foreground);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+/* 🌸 Iris Container */
+.iris-container {
+  width: 100%;
+  max-width: 600px; /* Match card width */
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 0 20px var(--foreground);
+}
+
+/* 🌟 Buttons - Social Icons */
+.btn-outline-light {
+  color: var(--card-text);
+  border-color: var(--foreground);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+  border-color: var(--button-hover);
+}
+
+/* ✨ Hyperlinks */
+a.text-decoration-none {
+  color: var(--foreground);
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a.text-decoration-none:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* 🌟 Spacing */
+.container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* 🖥️ Responsive Design */
+@media (max-width: 768px) {
+  .iris-container {
+    max-width: 90%;
+  }
+
+  .card {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* 🌟 Navbar Dark Theme */
+.navbar {
+  background-color: var(--background) !important; /* Dark background */
+  border-bottom: 1px solid var(--foreground); /* Fuchsia border */
+}
+
+.navbar-brand {
+  color: var(--foreground) !important; /* Fuchsia brand text */
+}
+
+.navbar-brand:hover {
+  color: var(--button-hover) !important; /* Brighter fuchsia on hover */
+}
+
+/* 🌸 Navbar Links */
+.nav-link {
+  color: var(--card-text) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--foreground) !important; /* Fuchsia on hover */
+}
+
+.nav-link.active {
+  color: var(--foreground) !important; /* Active link styling */
+  font-weight: bold;
+}
+
+/* 🌺 Search Bar */
+.form-control {
+  background-color: var(--card-bg) !important;
+  color: var(--card-text) !important;
+  border: 1px solid var(--foreground) !important;
+}
+
+.form-control::placeholder {
+  color: var(--card-text);
+}
+
+.form-control:focus {
+  border-color: var(--button-hover) !important;
+  box-shadow: 0 0 5px var(--button-hover) !important;
+}
+
+.btn-outline-light {
+  color: var(--card-text) !important;
+  border-color: var(--foreground) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--button-hover) !important;
+  color: #fff !important;
+  border-color: var(--button-hover) !important;
+}
+
+/* 🌟 Navbar Toggle Button */
+.navbar-toggler {
+  border: 1px solid var(--foreground);
+}
+
+.navbar-toggler-icon {
+  filter: invert(80%);
 }

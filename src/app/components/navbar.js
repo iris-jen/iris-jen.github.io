@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -11,14 +12,21 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        {/* Navbar Brand */}
-        <Link className="navbar-brand" href="/">
-        🌸💜
+        {/* Navbar Brand with Favicon */}
+        <Link className="navbar-brand d-flex align-items-center" href="/">
+          <Image
+            src="/favicon.ico"
+            alt="Logo"
+            width={32}
+            height={32}
+            className="me-2"
+          />
+          <span className="fw-bold">Iris Jennison</span>
         </Link>
 
-        {/* Toggle Button for Mobile View */}
+
         <button
           className="navbar-toggler"
           type="button"
@@ -37,9 +45,7 @@ export default function Navbar() {
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" href="/" aria-current="page">
-                Home
-              </Link>
+    
             </li>
             <li className="nav-item">
               <Link className="nav-link" href="/music">
@@ -61,12 +67,12 @@ export default function Navbar() {
           {/* Search Form */}
           <form className="d-flex" role="search">
             <input
-              className="form-control me-2"
+              className="form-control me-2 bg-dark text-light border-1"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-light" type="submit">
               Search
             </button>
           </form>
