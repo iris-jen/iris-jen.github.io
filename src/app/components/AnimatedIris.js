@@ -160,7 +160,7 @@ export default function Iris() {
 
     function drawGrass() {
       const scale = width / 500;
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 25; i++) {
         ctx.save();
         ctx.translate((width -900) * 0.08 + i * (width * 0.05), height * OFFSETS.GRASS_Y);
         ctx.rotate(Math.sin(Date.now() * 0.001 + i) * 0.2);

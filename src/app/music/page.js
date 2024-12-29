@@ -26,7 +26,7 @@ export default function Music() {
     <>
   
       <div className="container mt-5">
-        <h1 className="text-center text-primary mb-4">🎵 Music Collection</h1>
+
         <div className="row">
           {albums.map((album) => (
             <div key={album.id} className="col-md-6 col-lg-4 mb-4">
