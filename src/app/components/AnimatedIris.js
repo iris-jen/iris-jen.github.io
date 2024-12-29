@@ -1,15 +1,50 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+// 🌟 CONSTANTS FOR OFFSETS
+const OFFSETS = {
+  GRASS_Y: 0.9,   // Grass starts at 90% of canvas height
+  STEM_Y: 0.25,   // Stem starts at 25% of canvas height
+  PETALS_Y: 0.5,  // Petals centered at 50% of canvas height
+  CENTER_Y: 0.5,  // Center positioned at 50% of canvas height
+};
 
 export default function Iris() {
   const canvasRef = useRef(null);
+  const containerRef = useRef(null);
+  const [canvasDimensions, setCanvasDimensions] = useState({ width: 600, height: 600 });
+
+  // Update canvas size based on container's size
+  useEffect(() => {
+    const resizeCanvas = () => {
+      if (containerRef.current) {
+        const containerSize = Math.min(
+          containerRef.current.clientWidth,
+          containerRef.current.clientHeight
+        );
+        setCanvasDimensions({
+          width: containerSize,
+          height: containerSize,
+        });
+      }
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    return () => window.removeEventListener('resize', resizeCanvas);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
-    canvas.width = 600;
-    canvas.height = 600;
+    if (!ctx) return;
+
+    const { width, height } = canvasDimensions;
+    canvas.width = width;
+    canvas.height = height;
 
     // 🛠️ Utility Functions
     function clearCanvas() {
@@ -17,10 +52,10 @@ export default function Iris() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    function setupGlow(lineWidth = 1, shadowBlur = 15) {
-      ctx.strokeStyle = '#FF69B4'; // Light pink (fuchsia)
+    function setupGlow(lineWidth = 1, shadowBlur = 15, color = '#FF69B4') {
+      ctx.strokeStyle = color;
       ctx.shadowBlur = shadowBlur;
-      ctx.shadowColor = '#FF69B4';
+      ctx.shadowColor = color;
       ctx.lineWidth = lineWidth;
     }
 
@@ -33,21 +68,25 @@ export default function Iris() {
     function drawStem() {
       setupGlow(2);
       const path = new Path2D();
-      path.moveTo(300, 150);
-      path.lineTo(300, 500);
+      path.moveTo(width / 2, height * OFFSETS.STEM_Y);
+      path.lineTo(width / 2, height * 0.9);
       drawPath(path);
     }
 
-    // 🍃 Leaves
-    function drawLeaf(x, y, cp1x, cp1y, cp2x, cp2y, endX, endY, angle = 0) {
+    // 🍃 Leaves (Scaled)
+    function drawLeaf(scale, angle = 0) {
       ctx.save();
-      ctx.translate(x, y);
+      ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
       ctx.rotate(angle);
 
       setupGlow(1.5);
       const path = new Path2D();
       path.moveTo(0, 0);
-      path.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
+      path.bezierCurveTo(
+        -50 * scale, 80 * scale,
+        -70 * scale, 200 * scale,
+        -30 * scale, 250 * scale
+      );
       path.lineTo(0, 0);
       drawPath(path);
 
@@ -55,75 +94,84 @@ export default function Iris() {
     }
 
     function drawLeaves() {
-      drawLeaf(300, 250, -50, 80, -70, 200, -30, 250, 0.4);
-      drawLeaf(300, 250, 50, 80, 70, 200, 30, 250, -0.4);
-      drawLeaf(300, 250, -30, 60, -40, 100, -20, 130, 0.6);
-      drawLeaf(300, 250, 30, 60, 40, 100, 20, 130, -0.6);
+      const scale = width / 600; // Dynamic scaling factor
+      
+      drawLeaf(scale, 0.4);
+      drawLeaf(scale, -0.4);
+      drawLeaf(scale * 0.8, 0.6);
+      drawLeaf(scale * 0.8, -0.6);
     }
 
-    // 🌸 Petals with Animation
+    // 🌸 Petals (Scaled and Positioned Dynamically)
     let petalAngle = 0;
     let petalDirection = 1;
 
-    function drawPetal(x, y, angle = 0) {
+    function drawPetal(scale, angle = 0) {
       ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(angle + petalAngle); // Apply animated rotation
+      ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
+      ctx.rotate(angle + petalAngle);
 
       setupGlow(1);
       const path = new Path2D();
       path.moveTo(0, 0);
-      path.bezierCurveTo(-50, -100, 50, -100, 0, -150);
+      path.bezierCurveTo(
+        -50 * scale, -100 * scale,
+        50 * scale, -100 * scale,
+        0, -150 * scale
+      );
       path.lineTo(0, 0);
       drawPath(path);
       ctx.restore();
     }
 
     function drawPetals() {
-      const petalOriginY = 250;
-      drawPetal(300, petalOriginY, 0);
-      drawPetal(300, petalOriginY, Math.PI / 4);
-      drawPetal(300, petalOriginY, -Math.PI / 4);
-      drawPetal(300, petalOriginY, Math.PI / 2);
-      drawPetal(300, petalOriginY, -Math.PI / 2);
+      const scale = width / 600; // Scale petals dynamically
+      drawPetal(scale, 0);
+      drawPetal(scale, Math.PI / 4);
+      drawPetal(scale, -Math.PI / 4);
+      drawPetal(scale, Math.PI / 2);
+      drawPetal(scale, -Math.PI / 2);
     }
 
     // 🌟 Bud
     function drawCenter() {
       setupGlow(2, 20);
       const path = new Path2D();
-      path.arc(300, 250, 10, 0, Math.PI * 2);
+      path.arc(width / 2, height * OFFSETS.CENTER_Y, width * 0.02, 0, Math.PI * 2);
       drawPath(path);
     }
 
-    // 🌾 Grass
+    // 🌾 Grass (Multiple Shapes & Colors)
+    const grassColors = ['#FF69B4', '#C850C0', '#6A0DAD', '#9932CC'];
+    const grassShapes = [
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
+    ];
+
     function drawGrass() {
-      setupGlow(1, 10);
-      for (let i = 0; i < 15; i++) {
+      const scale = width / 200;
+      for (let i = 0; i < 40; i++) {
         ctx.save();
-        ctx.translate(100 + i * 30, 500);
-        ctx.rotate(Math.sin(Date.now() * 0.001 + i) * 0.2); // Sway effect
+        ctx.translate(width * 0.1 + i * (width * 0.05), height * OFFSETS.GRASS_Y);
+        ctx.rotate(Math.sin(Date.now() * 0.001 + i) * 0.2);
 
         const path = new Path2D();
         path.moveTo(0, 0);
-        path.lineTo(0, -50);
-        path.bezierCurveTo(10, -70, -10, -90, 0, -110);
+        path.lineTo(0, -90 * scale + i / 40);
+
+        const randomShape = grassShapes[Math.floor(Math.random() * grassShapes.length)];
+        const randomColor = grassColors[Math.floor(Math.random() * grassColors.length)];
+        setupGlow(1, 10, randomColor);
+
+        randomShape(scale, path);
         drawPath(path);
 
         ctx.restore();
       }
     }
 
-    // 🛤️ Ground Plane
-    function drawGround() {
-      setupGlow(1);
-      const path = new Path2D();
-      path.moveTo(0, 500);
-      path.lineTo(600, 500);
-      drawPath(path);
-    }
-
-    // ✨ Glowing Text with Breathing Animation
+    // ✨ Glowing Text with Animation
     let textGlow = 0;
     let textDirection = 1;
 
@@ -132,53 +180,36 @@ export default function Iris() {
       if (textGlow > 1 || textGlow < 0) textDirection *= -1;
 
       ctx.save();
-      ctx.font = '20px "Fira Code", "JetBrains Mono", monospace';
+      ctx.font = `${Math.max(16, width * 0.05)}px "Fira Code", "JetBrains Mono", monospace`;
       ctx.textAlign = 'center';
       ctx.fillStyle = `rgba(255, 105, 180, ${0.5 + 0.5 * Math.sin(textGlow)})`;
       ctx.shadowBlur = 15 + 10 * Math.sin(textGlow);
       ctx.shadowColor = '#FF69B4';
-      ctx.fillText('Iris Jennison', 300, 50);
+      ctx.fillText('Iris Jennison', width / 2, height * 0.1);
       ctx.restore();
     }
 
-    // 🎞️ Animation State
-    let glowPulse = 0;
-
-    // 🎞️ Animation Loop
     function animate() {
       clearCanvas();
+      petalAngle += 0.002 * petalDirection;
+      if (petalAngle > 0.1 || petalAngle < -0.1) petalDirection *= -1;
 
-      // Update animation states
-      glowPulse = (glowPulse + 0.05) % 2;
-
-      petalAngle += 0.002 * petalDirection; // Slow oscillating rotation
-      if (petalAngle > 0.1 || petalAngle < -0.1) petalDirection *= -1; // Change direction at limits
-
-      drawGround();
-      drawGrass();
       drawStem();
       drawLeaves();
       drawPetals();
       drawCenter();
+      drawGrass();
       drawText();
 
       requestAnimationFrame(animate);
     }
 
     animate();
-  }, []);
+  }, [canvasDimensions]);
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <canvas
-        ref={canvasRef}
-        style={{
-          border: '1px solid #FF69B4',
-          boxShadow: '0 0 25px #FF69B4',
-          background: 'black',
-          marginTop: '20px',
-        }}
-      ></canvas>
+    <div ref={containerRef} style={{ width: '100%', height: '100%', maxWidth: '600px', margin: '0 auto', aspectRatio: '1/1', overflow: 'hidden', position: 'relative' }}>
+      <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 }
