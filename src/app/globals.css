@@ -122,21 +122,7 @@ a.text-decoration-none:hover {
   font-weight: bold;
 }
 
-/* 🌺 Search Bar */
-.form-control {
-  background-color: var(--card-bg) !important;
-  color: var(--card-text) !important;
-  border: 1px solid var(--foreground) !important;
-}
 
-.form-control::placeholder {
-  color: var(--card-text);
-}
-
-.form-control:focus {
-  border-color: var(--button-hover) !important;
-  box-shadow: 0 0 5px var(--button-hover) !important;
-}
 
 .btn-outline-light {
   color: var(--card-text) !important;
@@ -187,4 +173,56 @@ a.text-decoration-none:hover {
 audio {
   margin-top: 10px;
   width: 100%;
+}
+
+/* 🌟 Track Title Text */
+.list-group-item span {
+  color: var(--card-text) !important;
+}
+
+/* 🌟 Button Fix */
+.btn-outline-light {
+  color: var(--card-text) !important;
+  border-color: var(--foreground) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--button-hover) !important;
+  color: #fff !important;
+  border-color: var(--button-hover) !important;
+}
+
+/* 🌟 Modal Styling */
+.modal-content {
+  background-color: var(--card-bg) !important;
+  color: var(--card-text) !important;
+  border: 1px solid var(--foreground);
+}
+
+.modal-header,
+.modal-footer {
+  background-color: var(--background) !important;
+  color: var(--card-text) !important;
+}
+
+.modal-body p {
+  color: var(--card-text) !important;
+}
+
+/* 🌟 Track List Item Colors */
+.list-group-item {
+  background-color: var(--card-bg) !important;
+  color: var(--card-text) !important;
+  border: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item.bg-primary {
+  background-color: var(--button-hover) !important;
+  color: #fff !important;
+  font-weight: bold;
 }

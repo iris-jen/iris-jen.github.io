@@ -4,18 +4,21 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 
 export default function AlbumDetailsModal({ show, onClose, album }) {
-  // ✅ Declare all hooks at the top of the component
-  const [currentTrack, setCurrentTrack] = useState(null);
+
+  const [currentTrackPath, SetCurrentTrackPath] = useState(null);
+  const [currentTrackName, SetCurrentTrackName] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  // ✅ Play or Pause Track
+  
   const playTrack = (track) => {
-    if (currentTrack === track && isPlaying) {
+    console.log(track)
+    if (currentTrackPath === track.file && isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      setCurrentTrack(track);
+      SetCurrentTrackPath(track.file);
+      SetCurrentTrackName(track.title);
       setIsPlaying(true);
       setTimeout(() => {
         if (audioRef.current) {
@@ -25,7 +28,6 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
     }
   };
 
-  // ✅ Pause Track
   const pauseTrack = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -85,20 +87,36 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
                     <li
                       key={index}
                       className={`list-group-item d-flex justify-content-between align-items-center ${
-                        currentTrack === track.title ? 'bg-primary text-white' : 'bg-transparent'
+                        currentTrackPath === track.title ? 'bg-primary text-white' : 'bg-transparent'
                       }`}
                     >
-                      {track.title}
-                      <button
-                        onClick={() => playTrack(track.file)}
-                        className="btn btn-sm btn-outline-light"
-                      >
-                        {currentTrack === track.file && isPlaying ? (
-                          <i className="bi bi-pause-fill"></i>
-                        ) : (
-                          <i className="bi bi-play-fill"></i>
-                        )}
-                      </button>
+                      {/* Track Title */}
+                      <span>{track.title}</span>
+
+                      {/* Action Buttons */}
+                      <div className="d-flex gap-2">
+                        {/* Play/Pause Button */}
+                        <button
+                          onClick={() => playTrack(track)}
+                          className="btn btn-sm btn-outline-light"
+                        >
+                          {currentTrackPath === track.file && isPlaying ? (
+                            <i className="bi bi-pause-fill"></i>
+                          ) : (
+                            <i className="bi bi-play-fill"></i>
+                          )}
+                        </button>
+
+                        {/* Download Button */}
+                        <a
+                          href={track.file}
+                          download
+                          className="btn btn-sm btn-outline-light"
+                          title="Download Track"
+                        >
+                          <i className="bi bi-download"></i>
+                        </a>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -107,7 +125,7 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
 
             {/* Streaming Links */}
             <div className="mt-4">
-              <h6>Listen on:</h6>
+              <h6>Also on:</h6>
               <div className="d-flex justify-content-center gap-3 mt-2">
                 {renderLink(album.links?.appleMusic, 'bi bi-apple', 'Apple Music')}
                 {renderLink(album.links?.spotify, 'bi bi-spotify', 'Spotify')}
@@ -119,13 +137,13 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
           </div>
 
           {/* Media Player */}
-          {currentTrack && (
+          {currentTrackPath && (
             <div className="modal-footer d-flex flex-column align-items-center bg-secondary text-white py-3">
               <h6>Now Playing:</h6>
-              <p className="fw-bold">{currentTrack}</p>
+              <p className="fw-bold">{currentTrackName}</p>
               <audio
                 ref={audioRef}
-                src={`/albums/${album.id}/${currentTrack.toLowerCase().replace(/ /g, '_')}.mp3`}
+                src={currentTrackPath}
                 controls
                 className="w-100"
               ></audio>
@@ -136,16 +154,11 @@ export default function AlbumDetailsModal({ show, onClose, album }) {
             <button type="button" className="btn btn-outline-light" onClick={onClose}>
               Close
             </button>
-            <a
-              href={`/albums/${album.id}.zip`}
-              download={`${album.name}.zip`}
-              className="btn btn-primary"
-            >
-              Download MP3s
-            </a>
+  
           </div>
         </div>
       </div>
     </div>
   );
 }
+  // ✅ Pause Track
