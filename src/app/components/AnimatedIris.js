@@ -13,9 +13,12 @@ const OFFSETS = {
 export default function Iris() {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const animationFrameRef = useRef(null); // Store animation frame ID
+  const observerRef = useRef(null); // Store IntersectionObserver
+  const [isVisible, setIsVisible] = useState(false); // Track visibility
   const [canvasDimensions, setCanvasDimensions] = useState({ width: 600, height: 600 });
 
-  // Update canvas size based on container's size
+  // ✅ Resize Canvas Based on Container Size
   useEffect(() => {
     const resizeCanvas = () => {
       if (containerRef.current) {
@@ -35,6 +38,27 @@ export default function Iris() {
     return () => window.removeEventListener('resize', resizeCanvas);
   }, []);
 
+  // ✅ Handle Visibility with IntersectionObserver
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    observerRef.current = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observerRef.current.observe(containerRef.current);
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  // ✅ Animation Logic
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -45,6 +69,10 @@ export default function Iris() {
     const { width, height } = canvasDimensions;
     canvas.width = width;
     canvas.height = height;
+
+    let petalAngle = 0;
+    let petalDirection = 1;
+    let grassTime = 0; // Add a time variable for continuous animation
 
     // 🛠️ Utility Functions
     function clearCanvas() {
@@ -64,100 +92,67 @@ export default function Iris() {
       ctx.stroke(path);
     }
 
-    // 🌿 Stem
+    // 🌿 Drawing Functions
     function drawStem() {
-      setupGlow(2, 15, '#FF69B4'); // Fuchsia for the stem
+      setupGlow(2, 15, '#FF69B4');
       const path = new Path2D();
       path.moveTo(width / 2, height * OFFSETS.STEM_Y);
       path.lineTo(width / 2, height * 1.2);
       drawPath(path);
     }
 
-    // 🍃 Leaves (Scaled)
-    function drawLeaf(scale, angle = 0) {
-      ctx.save();
-      ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
-      ctx.rotate(angle);
-
-      setupGlow(1.5, 15, '#FF69B4'); // Fuchsia for leaves
-      const path = new Path2D();
-      path.moveTo(0, 0);
-      path.bezierCurveTo(
-        -50 * scale, 80 * scale,
-        -70 * scale, 200 * scale,
-        -30 * scale, 250 * scale
-      );
-      path.lineTo(0, 0);
-      drawPath(path);
-
-      ctx.restore();
-    }
-
     function drawLeaves() {
-      const scale = width / 600; // Dynamic scaling factor
-      
-      drawLeaf(scale, 80);
-      drawLeaf(scale, -90);
-      drawLeaf(scale, 180);
-      drawLeaf(scale, -80);
-      drawLeaf(scale, 90);
-      drawLeaf(scale, 0);
-      drawLeaf(scale, -60);
-      drawLeaf(scale, -30);
-    }
-
-    // 🌸 Petals (Fuchsia)
-    let petalAngle = 0;
-    let petalDirection = 1;
-
-    function drawPetal(scale, angle = 0) {
-      ctx.save();
-      ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
-      ctx.rotate(angle + petalAngle);
-
-      setupGlow(1, 15, '#FF69B4'); // Fuchsia for petals
-      const path = new Path2D();
-      path.moveTo(0, 0);
-      path.bezierCurveTo(
-        -50 * scale, -100 * scale,
-        50 * scale, -100 * scale,
-        0, -150 * scale
-      );
-      path.lineTo(0, 0);
-      drawPath(path);
-      ctx.restore();
+      const scale = width / 600;
+      for (let angle of [80, -90, 180, -80, 90, 0, -60, -30]) {
+        ctx.save();
+        ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
+        ctx.rotate(angle);
+        setupGlow(1.5, 15, '#FF69B4');
+        const path = new Path2D();
+        path.moveTo(0, 0);
+        path.bezierCurveTo(-50 * scale, 80 * scale, -70 * scale, 200 * scale, -30 * scale, 250 * scale);
+        path.lineTo(0, 0);
+        drawPath(path);
+        ctx.restore();
+      }
     }
 
     function drawPetals() {
-      const scale = width / 600; // Scale petals dynamically
-      drawPetal(scale, 0);
-      drawPetal(scale, Math.PI / 4);
-      drawPetal(scale, -Math.PI / 4);
-      drawPetal(scale, Math.PI / 2);
-      drawPetal(scale, -Math.PI / 2);
+      const scale = width / 600;
+      for (let angle of [0, Math.PI / 4, -Math.PI / 4, Math.PI / 2, -Math.PI / 2]) {
+        ctx.save();
+        ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
+        ctx.rotate(angle + petalAngle);
+        setupGlow(1, 15, '#FF69B4');
+        const path = new Path2D();
+        path.moveTo(0, 0);
+        path.bezierCurveTo(-50 * scale, -100 * scale, 50 * scale, -100 * scale, 0, -150 * scale);
+        path.lineTo(0, 0);
+        drawPath(path);
+        ctx.restore();
+      }
     }
 
-    // 🌟 Bud
     function drawCenter() {
-      setupGlow(2, 20, '#FF69B4'); // Fuchsia for center
+      setupGlow(2, 20, '#FF69B4');
       const path = new Path2D();
       path.arc(width / 2, height * OFFSETS.CENTER_Y, width * 0.02, 0, Math.PI * 2);
       drawPath(path);
     }
 
-    // 🌾 Grass (Purple)
     function drawGrass() {
       const scale = width / 500;
+      grassTime += 0.05; // Increment the animation time
       for (let i = 0; i < 25; i++) {
         ctx.save();
         ctx.translate((width - 900) * 0.08 + i * (width * 0.05), height * OFFSETS.GRASS_Y);
-        ctx.rotate(Math.sin(Date.now() * 0.001 + i) * 0.2);
+        ctx.rotate(Math.sin(grassTime + i * 0.3) * 0.2); // Add time-based movement
 
         const path = new Path2D();
         path.moveTo(-30, 200);
         path.lineTo(0, -90 * scale + i / 40);
 
-        setupGlow(1, 10, '#9932CC'); // Purple for grass
+        setupGlow(1, 10, '#9932CC');
         path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 190);
         drawPath(path);
 
@@ -166,6 +161,11 @@ export default function Iris() {
     }
 
     function animate() {
+      if (!isVisible) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       clearCanvas();
       petalAngle += 0.0005 * petalDirection;
       if (petalAngle > 0.1 || petalAngle < -0.1) petalDirection *= -1;
@@ -176,30 +176,24 @@ export default function Iris() {
       drawCenter();
       drawGrass();
 
-      requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
     }
 
     animate();
-  }, [canvasDimensions]);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [canvasDimensions, isVisible]);
 
   return (
     <div 
       ref={containerRef} 
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        maxWidth: '600px', 
-        margin: '0 auto', 
-        aspectRatio: '1/1', 
-        overflow: 'hidden', 
-        position: 'relative',
-        border: 'none'
-      }}
+      style={{ width: '100%', height: '100%', maxWidth: '600px', margin: '0 auto', aspectRatio: '1/1', overflow: 'hidden' }}
     >
-      <canvas 
-        ref={canvasRef} 
-        style={{ width: '100%', height: '100%', border: 'none' }} 
-      />
+      <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 }

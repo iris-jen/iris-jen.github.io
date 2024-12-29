@@ -93,6 +93,12 @@ a.text-decoration-none:hover {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+/* Square Avatar Styling */
+.img-fluid.rounded {
+  object-fit: cover; /* Ensures the image fills the square area */
+  aspect-ratio: 1 / 1; /* Forces a square aspect ratio */
+}
+
 
 /* 🖥️ Responsive Design */
 @media (max-width: 768px) {
