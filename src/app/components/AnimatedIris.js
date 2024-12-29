@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // 🌟 CONSTANTS FOR OFFSETS
 const OFFSETS = {
-  GRASS_Y: 0.9,   // Grass starts at 90% of canvas height
-  STEM_Y: 0.25,   // Stem starts at 25% of canvas height
-  PETALS_Y: 0.5,  // Petals centered at 50% of canvas height
-  CENTER_Y: 0.5,  // Center positioned at 50% of canvas height
+  GRASS_Y: 0.95,   // Grass starts at 90% of canvas height
+  STEM_Y: 0.40,   // Stem starts at 25% of canvas height
+  PETALS_Y: 0.40,  // Petals centered at 50% of canvas height
+  CENTER_Y: 0.40,  // Center positioned at 50% of canvas height
 };
 
 export default function Iris() {
@@ -69,7 +69,7 @@ export default function Iris() {
       setupGlow(2);
       const path = new Path2D();
       path.moveTo(width / 2, height * OFFSETS.STEM_Y);
-      path.lineTo(width / 2, height * 0.9);
+      path.lineTo(width / 2, height * 1.2);
       drawPath(path);
     }
 
@@ -96,10 +96,19 @@ export default function Iris() {
     function drawLeaves() {
       const scale = width / 600; // Dynamic scaling factor
       
-      drawLeaf(scale, 0.4);
-      drawLeaf(scale, -0.4);
-      drawLeaf(scale * 0.8, 0.6);
-      drawLeaf(scale * 0.8, -0.6);
+      drawLeaf(scale, 80);
+      drawLeaf(scale, -90);
+       drawLeaf(scale, 180);
+
+       drawLeaf(scale, -80);
+       drawLeaf(scale, 90);
+        drawLeaf(scale, -0);
+        drawLeaf(scale, -600);
+        drawLeaf(scale, -300);
+        drawLeaf(scale, -100);
+        drawLeaf(scale, -100);
+        drawLeaf(scale, -30);
+     // drawLeaf(scale, -180);
     }
 
     // 🌸 Petals (Scaled and Positioned Dynamically)
@@ -144,20 +153,20 @@ export default function Iris() {
     // 🌾 Grass (Multiple Shapes & Colors)
     const grassColors = ['#FF69B4', '#C850C0', '#6A0DAD', '#9932CC'];
     const grassShapes = [
-      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
-      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
-      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 180),
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 190),
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 190),
+      (scale, path) => path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 190),
     ];
 
     function drawGrass() {
-      const scale = width / 200;
+      const scale = width / 500;
       for (let i = 0; i < 40; i++) {
         ctx.save();
-        ctx.translate(width * 0.1 + i * (width * 0.05), height * OFFSETS.GRASS_Y);
+        ctx.translate((width -900) * 0.08 + i * (width * 0.05), height * OFFSETS.GRASS_Y);
         ctx.rotate(Math.sin(Date.now() * 0.001 + i) * 0.2);
 
         const path = new Path2D();
-        path.moveTo(0, 0);
+        path.moveTo(-30, 200);
         path.lineTo(0, -90 * scale + i / 40);
 
         const randomShape = grassShapes[Math.floor(Math.random() * grassShapes.length)];
@@ -180,18 +189,27 @@ export default function Iris() {
       if (textGlow > 1 || textGlow < 0) textDirection *= -1;
 
       ctx.save();
-      ctx.font = `${Math.max(16, width * 0.05)}px "Fira Code", "JetBrains Mono", monospace`;
-      ctx.textAlign = 'center';
-      ctx.fillStyle = `rgba(255, 105, 180, ${0.5 + 0.5 * Math.sin(textGlow)})`;
-      ctx.shadowBlur = 15 + 10 * Math.sin(textGlow);
-      ctx.shadowColor = '#FF69B4';
-      ctx.fillText('Iris Jennison', width / 2, height * 0.1);
+      ctx.font = `${Math.max(16, width * 0.05)}px "Fira Code", "JetBrains Mono", monospace`; // Cute and techy font vibes
+      ctx.textAlign = 'center'; // Keep it perfectly centered. Balance is key, bestie. 🧘‍♀️✨
+      
+      // 💜 Update the Fill Style to Purple
+      ctx.fillStyle = `rgba(138, 43, 226, ${0.5 + 0.5 * Math.sin(textGlow)})`; // Royal Purple, dynamic opacity 🌟
+      
+      // 💜 Update the Shadow for Extra Purple Drama
+      ctx.shadowBlur = 15 + 10 * Math.sin(textGlow); // A lil' flicker for ✨magic✨
+      ctx.shadowColor = '#8A2BE2'; // The glow is like, totally *purplecore* vibes
+      
+      // 💜 Update the Text Itself
+      ctx.fillText('Iris Jennison', width / 2, height * 0.1); // The star of the show 🟣✨
+      
+      // Back to reality, babe. 🖤
       ctx.restore();
+      
     }
 
     function animate() {
       clearCanvas();
-      petalAngle += 0.002 * petalDirection;
+      petalAngle += 0.0005 * petalDirection;
       if (petalAngle > 0.1 || petalAngle < -0.1) petalDirection *= -1;
 
       drawStem();
