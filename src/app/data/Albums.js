@@ -68,7 +68,37 @@ const albums = [
       deezer: 'https://www.deezer.com/album/686326691'
     }
   },
-
+  {
+    id: 'oo1',
+    name: 'Odds and ends. Volume 1',
+    recordedYear: 2015,
+    writtenYear: 2012,
+    cover: 'music/oo1/cover.png',
+     details: 'TBR: Waiting on license for a cover check back her later for links!',
+    links: {
+      appleMusic: null,
+      spotify: null,
+      itunes: null,
+      youtubeMusic: null,
+      deezer: null
+    }
+  },
+  {
+    id: 'oo2',
+    name: 'Odds and ends. Volume 2',
+    recordedYear: 2013,
+    writtenYear: 2011,
+    cover: 'music/oo2/cover.png',
+     details: 'To lazy to post all the songs here + github pages have limited storage /r/n'+
+     'so check out the links!',
+    links: {
+      appleMusic: "https://geo.music.apple.com/album/odds-and-ends-volume-2/1787590246",
+      spotify: "https://open.spotify.com/album/4K1jv7LczuuTmY23yTyAa2",
+      itunes: null,
+      youtubeMusic: null,
+      deezer: "https://open.qobuz.com/album/inyy73kad65cc"
+    }
+  }
 ];
 
 export default albums;

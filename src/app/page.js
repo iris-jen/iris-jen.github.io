@@ -31,6 +31,14 @@ export default function Home() {
                 🎵 Music
               </a>
             </div>
+            <div className="mt-3">
+              <a
+                href="mailto:iris.jennis@gmail.com"
+                className="btn btn-outline-light fw-bold"
+              >
+                📧 Contact
+              </a>
+            </div>
           </div>
         </div>
 

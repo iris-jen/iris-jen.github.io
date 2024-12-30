@@ -5,9 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 // 🌟 CONSTANTS FOR OFFSETS
 const OFFSETS = {
   GRASS_Y: 0.95,   // Grass starts at 95% of canvas height
-  STEM_Y: 0.40,    // Stem starts at 40% of canvas height
-  PETALS_Y: 0.40,  // Petals centered at 40% of canvas height
-  CENTER_Y: 0.40,  // Center positioned at 40% of canvas height
+  STEM_Y: 0.50,    // Stem starts at 40% of canvas height
+  PETALS_Y: 0.50,  // Petals centered at 40% of canvas height
+  CENTER_Y: 0.50,  // Center positioned at 40% of canvas height
 };
 
 export default function Iris() {
@@ -94,7 +94,7 @@ export default function Iris() {
 
     // 🌿 Drawing Functions
     function drawStem() {
-      setupGlow(2, 15, '#FF69B4');
+      setupGlow(2, 15, '#69FFB4');
       const path = new Path2D();
       path.moveTo(width / 2, height * OFFSETS.STEM_Y);
       path.lineTo(width / 2, height * 1.2);
@@ -103,11 +103,11 @@ export default function Iris() {
 
     function drawLeaves() {
       const scale = width / 600;
-      for (let angle of [80, -90, 180, -80, 90, 0, -60, -30]) {
+      for (let angle of [-30,40,  -90,50, 400, 449]) {
         ctx.save();
         ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
         ctx.rotate(angle);
-        setupGlow(1.5, 15, '#FF69B4');
+        setupGlow(1.5, 15, '#FF69FF');
         const path = new Path2D();
         path.moveTo(0, 0);
         path.bezierCurveTo(-50 * scale, 80 * scale, -70 * scale, 200 * scale, -30 * scale, 250 * scale);
@@ -119,7 +119,7 @@ export default function Iris() {
 
     function drawPetals() {
       const scale = width / 600;
-      for (let angle of [0, Math.PI / 4, -Math.PI / 4, Math.PI / 2, -Math.PI / 2]) {
+      for (let angle of [0, Math.PI / 4, -Math.PI / 4, Math.PI / 2, -Math.PI / 2, -Math.PI / 3, Math.PI / 3]) {
         ctx.save();
         ctx.translate(width / 2, height * OFFSETS.PETALS_Y);
         ctx.rotate(angle + petalAngle);
@@ -134,7 +134,7 @@ export default function Iris() {
     }
 
     function drawCenter() {
-      setupGlow(2, 20, '#FF69B4');
+      setupGlow(2, 20, '#FF6969');
       const path = new Path2D();
       path.arc(width / 2, height * OFFSETS.CENTER_Y, width * 0.02, 0, Math.PI * 2);
       drawPath(path);
@@ -152,7 +152,7 @@ export default function Iris() {
         path.moveTo(-30, 200);
         path.lineTo(0, -90 * scale + i / 40);
 
-        setupGlow(1, 10, '#9932CC');
+        setupGlow(1, 10, '#69FFB4');
         path.bezierCurveTo(20 * scale, 200, 30 * scale, 180, 100, 190);
         drawPath(path);
 
