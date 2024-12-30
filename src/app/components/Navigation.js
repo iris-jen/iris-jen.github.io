@@ -3,19 +3,29 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const pathname = usePathname(); // Get current route
 
   const toggleNavbar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  // Function to determine if a link is active
+  const isActive = (path) => pathname === path;
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         {/* Navbar Brand with Favicon */}
-        <Link className="navbar-brand d-flex align-items-center" href="/">
+        <Link
+          className={`navbar-brand d-flex align-items-center ${
+            isActive('/') ? 'active-page' : ''
+          }`}
+          href="/"
+        >
           <Image
             src="/logo.ico"
             alt="Logo"
@@ -23,9 +33,8 @@ export default function Navbar() {
             height={32}
             className="me-2"
           />
-          <span className="fw-bold">Iris Jennison</span>
+          <span className="fw-bold">Iris</span>
         </Link>
-
 
         <button
           className="navbar-toggler"
@@ -45,18 +54,24 @@ export default function Navbar() {
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-    
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/music">
+              <Link
+                className={`nav-link ${isActive('/music') ? 'active-page' : ''}`}
+                href="/music"
+              >
                 Music
               </Link>
             </li>
-     
-          
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${
+                  isActive('/projects') ? 'active-page' : ''
+                }`}
+                href="/projects"
+              >
+                Projects
+              </Link>
+            </li>
           </ul>
-
-         
         </div>
       </div>
     </nav>

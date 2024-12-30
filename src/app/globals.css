@@ -427,3 +427,46 @@ body.starry-background::after {
   display: inline-block; /* Ensures proper rendering */
   font-weight: bold; /* Optional: Make it pop */
 }
+
+/* 🌟 Full Page Background Image */
+/* 🌟 Full Page Background Image */
+.background-image {
+  position: fixed; /* Ensure it stays fixed during scrolling */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/background.jpg') no-repeat center center/cover;
+  z-index: -1; /* Ensure it stays behind everything */
+}
+
+/* ✨ Content Container */
+.content-container {
+  position: relative; /* Keep content above background */
+  z-index: 1; /* Ensure it stays on top */
+  min-height: 100vh;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6); /* Optional dark overlay for better readability */
+  backdrop-filter: blur(5px); /* Subtle blur for better text visibility */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ✨ Navbar Styling (Ensures Navbar displays correctly) */
+.navbar {
+  z-index: 2; /* Ensure the navbar stays above everything */
+}
+
+/* 🌟 Navbar Active Page Highlight */
+.navbar .nav-link,
+.navbar-brand {
+  color: #ededed; /* Default color */
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link.active-page,
+.navbar-brand.active-page {
+  color: #ff69b4 !important; /* Pink for active page */
+  font-weight: bold;
+  text-decoration: underline;
+}
