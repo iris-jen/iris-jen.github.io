@@ -10,7 +10,7 @@ export default function Home() {
         </div>
    
 
-        <div className="card shadow-lg border-0 text-white bg-dark schooch">
+        <div className="card text-white bg-dark album-card mb-4 shadow-sm schooch">
           <div className="card-body text-center p-4">
             <h3 className="card-title fw-bold trans-flag-text">💜 Howdey! ^.^ 💜</h3>
             <div className="d-flex justify-content-center mt-4">
@@ -42,33 +42,41 @@ export default function Home() {
                feel free to use it as template to make your own :3 </i> 💻
             </a>
           </div>
+            <div>
+              <a
+                href="/music"
+                className="btn btn-outline-light fw-bold"
+              >
+                🎵<b className="trans-flag-text">Music</b>
+              </a>
+            </div>
             <div className="mt-3">
               <a
                 href="/music"
-                className="btn btn-outline-light fw-bold trans-flag-text"
+                className="btn btn-outline-light fw-bold"
               >
-                🎵 Music
+                🛠️<b className="trans-flag-text">Projects</b>
               </a>
             </div>
             <div className="mt-3">
               <a
                 href="mailto:iris.jennis@gmail.com"
-                className="btn btn-outline-light fw-bold trans-flag-text"
+                className="btn btn-outline-light fw-bold"
               >
-                📧 Contact
+                📧<b className="trans-flag-text">Contact</b>
               </a>
             </div>
             <div className="d-flex justify-content-center gap-3 mt-3">
-              <a href="https://github.com/iris-jen" target="_blank" className="btn btn-outline-light rounded-circle p-3 trans-flag-text">
+              <a href="https://github.com/iris-jen" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
                 <i className="bi bi-github"></i>
               </a>
-              <a href="https://www.instagram.com/iris_jennison_/" target="_blank" className="btn btn-outline-light rounded-circle p-3 trans-flag-text">
+              <a href="https://www.instagram.com/iris_jennison_/" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
                 <i className="bi bi-instagram"></i>
               </a>
-              <a href="https://www.facebook.com/people/Iris-Jennison-Music/61571030457155/" target="_blank" className="btn btn-outline-light rounded-circle p-3 trans-flag-text">
+              <a href="https://www.facebook.com/people/Iris-Jennison-Music/61571030457155/" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a href="https://discordapp.com/users/_iris_j" target="_blank" className="btn btn-outline-light rounded-circle p-3 trans-flag-text">
+              <a href="https://discordapp.com/users/_iris_j" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
                 <i className="bi bi-discord"></i>
               </a>
             </div>

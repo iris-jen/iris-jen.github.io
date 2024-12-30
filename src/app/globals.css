@@ -44,19 +44,24 @@ body {
   padding: 1.5rem;
 }
 
-.schooch{
- margin-top: -100px; 
- margin-left: 5%;
- margin-right: 5%;
- box-shadow: #9932cc;
+/* 🌟 Card with Purple Border */
+.schooch {
+  margin-top: -100px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 3px solid #9932cc !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 15px 5px rgba(153, 50, 204, 0.5) !important;
+  
 }
+
 
 /* 🌸 Iris Container */
 .iris-container {
   width: 100%;
   max-width: 700px; /* Match card width */
   aspect-ratio: 1 / 1;
-margin-bottom: -500px;
+  margin-bottom: -500px;
   margin-bottom: 100px;
   overflow: hidden;
   border-radius: 12px;
@@ -109,7 +114,7 @@ a.text-decoration-none:hover {
 
 
 /* 🖥️ Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .iris-container {
     max-width: 90%;
   }
