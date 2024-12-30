@@ -154,7 +154,21 @@ a.text-decoration-none:hover {
   border: 1px solid var(--foreground);
 }
 
-.navbar-toggler-icon {
+.navbar-toggler-icon {/* 🌈 Trans Flag Text */
+  .trans-flag-text {
+    background: linear-gradient(
+      90deg,
+      #5BCEFA 20%,
+      #F5A9B8 40%,
+      #FFFFFF 60%,
+      #F5A9B8 80%,
+      #5BCEFA 100%
+    );
+    -webkit-background-clip: text; /* Ensures gradient applies only to text */
+    -webkit-text-fill-color: transparent; /* Makes non-text parts transparent */
+    display: inline-block; /* Ensures proper rendering */
+    font-weight: bold; /* Optional: Make it pop */
+  }
   filter: invert(80%);
 }
 
@@ -225,8 +239,21 @@ audio {
   background-color: var(--button-hover) !important;
   color: #fff !important;
   border-color: var(--button-hover) !important;
+}/* 🌈 Trans Flag Text */
+.trans-flag-text {
+  background: linear-gradient(
+    90deg,
+    #5BCEFA 20%,
+    #F5A9B8 40%,
+    #FFFFFF 60%,
+    #F5A9B8 80%,
+    #5BCEFA 100%
+  );
+  -webkit-background-clip: text; /* Ensures gradient applies only to text */
+  -webkit-text-fill-color: transparent; /* Makes non-text parts transparent */
+  display: inline-block; /* Ensures proper rendering */
+  font-weight: bold; /* Optional: Make it pop */
 }
-
 /* 🌟 Track List Item Colors */
 .list-group-item {
   background-color: var(--card-bg) !important;
@@ -348,4 +375,55 @@ body.starry-background::after {
   margin: 1rem auto;
   max-width: 1200px;
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1);
+}
+
+/* 🌟 Project Cards */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* 🌟 Modal Enhancements */
+.modal-header {
+  background-color: #171717;
+  color: #ededed;
+}
+
+.modal-body {
+  background-color: #1f1f1f;
+  color: #ededed;
+}
+
+.modal-footer {
+  background-color: #171717;
+  color: #ededed;
+}
+
+/* 🌈 Trans Flag Text */
+.trans-flag-text {
+  background: linear-gradient(
+    90deg,
+    #5BCEFA 20%,
+    #F5A9B8 40%,
+    #FFFFFF 60%,
+    #F5A9B8 80%,
+    #5BCEFA 100%
+  );
+  -webkit-background-clip: text; /* Ensures gradient applies only to text */
+  -webkit-text-fill-color: transparent; /* Makes non-text parts transparent */
+  display: inline-block; /* Ensures proper rendering */
+  font-weight: bold; /* Optional: Make it pop */
 }
