@@ -5,24 +5,36 @@ import TitleBlock from './components/AnimatedIris';
 export default function Home() {
   return (
     <>
-      <div className="container text-center mt-5">
-        <div className="card shadow-lg mb-5 border-0 text-white bg-dark">
+       <div className="iris-container mx-auto ">
+          <TitleBlock />
+        </div>
+   
+
+        <div className="card shadow-lg border-0 text-white bg-dark schooch">
           <div className="card-body text-center p-4">
-            <h5 className="card-title fw-bold">Hi!</h5>
-            <p className="card-text">
-              You found my personal site!
-              Im a musician / software developer / sometimes person.
-              i made this to keep track of projects, and keep links to stuff in one place.
-            </p>
+            <h3 className="card-title fw-bold">Hi ^.^!</h3>
             <div className="d-flex justify-content-center mt-4">
               <Image
                 src="me.jpg"
                 alt="Square Avatar"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 className="img-fluid rounded border border-3 border-primary"
               />
             </div>
+            <p className="card-text">
+              <br/>
+              You found my website :) <br/>
+              Im a musician / software developer / sometimes person.<br/>
+              I made this to keep track of projects<br/>
+               and keep links to stuff in one place. <br/>
+              stay a while! click / tap some stuff 🖱️
+            </p>
+            <div className="text-center mt-4 mb-5">
+            <a href="https://github.com/iris-jen/iris-jen.github.io" target="_blank" className="text-decoration-none fw-bold text-light">
+            💻 Source Code for this Website 💻
+            </a>
+          </div>
             <div className="mt-3">
               <a
                 href="/music"
@@ -39,17 +51,6 @@ export default function Home() {
                 📧 Contact
               </a>
             </div>
-          </div>
-        </div>
-
-        <div className="iris-container mx-auto mb-5">
-          <TitleBlock />
-        </div>
-
-        {/* Social Links Card */}
-        <div className="card shadow-lg mb-5 border-0 text-white bg-dark">
-          <div className="card-body text-center p-4">
-
             <div className="d-flex justify-content-center gap-3 mt-3">
               <a href="https://github.com/iris-jen" target="_blank" className="btn btn-outline-light rounded-circle p-3">
                 <i className="bi bi-github"></i>
@@ -65,13 +66,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="text-center mt-4 mb-5">
-            <a href="https://github.com/iris-jen/iris-jen.github.io" target="_blank" className="text-decoration-none fw-bold text-light">
-              Source Code for this Website (Next.js)
-            </a>
-          </div>
         </div>
-      </div>
+
+     
+      
     </>
   );
 }

@@ -44,12 +44,20 @@ body {
   padding: 1.5rem;
 }
 
+.schooch{
+ margin-top: -15%; 
+ margin-left: 5%;
+ margin-right: 5%;
+ box-shadow: #9932cc;
+}
+
 /* 🌸 Iris Container */
 .iris-container {
   width: 100%;
-  max-width: 600px; /* Match card width */
+  max-width: 700px; /* Match card width */
   aspect-ratio: 1 / 1;
-  margin: 0 auto;
+margin-bottom: -500px;
+  margin-bottom: 100px;
   overflow: hidden;
   border-radius: 12px;
   background: #000;
@@ -235,4 +243,38 @@ audio {
   background-color: var(--button-hover) !important;
   color: #fff !important;
   font-weight: bold;
+}
+
+/* 🌑 Force Global Black Background */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #000000 !important; /* Force black background */
+  color: var(--card-text, #ededed); /* Default text color */
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: -1;
+}
+
+/* 🌑 Ensure Transparency in Canvas */
+canvas {
+  background: transparent !important;
 }

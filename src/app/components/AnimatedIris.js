@@ -76,7 +76,6 @@ export default function Iris() {
 
     // 🛠️ Utility Functions
     function clearCanvas() {
-      ctx.fillStyle = 'black';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
