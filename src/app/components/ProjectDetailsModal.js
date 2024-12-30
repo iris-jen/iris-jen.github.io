@@ -25,21 +25,9 @@ export default function ProjectDetailsModal({ show, onClose, project }) {
 
           {/* Modal Body */}
           <div className="modal-body">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="img-fluid mb-3"
-              style={{ borderRadius: '8px' }}
-            />
-            <p>{project.longDescription}</p>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              View Project
-            </a>
+            
+            {project.modalContent}
+       
           </div>
 
           {/* Modal Footer */}

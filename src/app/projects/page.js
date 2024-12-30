@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import ProjectOne from '../data/projects/ProjectOne';
+import FretlessBass from '../data/projects/FretlessBass';
 
 import ProjectDetailsModal from '../components/ProjectDetailsModal';
 
@@ -25,7 +25,7 @@ export default function Projects() {
 
         <div className="row">
           <div className="col-md-6 col-lg-4 mb-4">
-            <ProjectOne onClick={openModal} />
+            <FretlessBass onClick={openModal} />
           </div>
 
         </div>
