@@ -76,7 +76,8 @@ export default function Iris() {
 
     // 🛠️ Utility Functions
     function clearCanvas() {
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     function setupGlow(lineWidth = 1, shadowBlur = 15, color = '#FF69B4') {

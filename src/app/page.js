@@ -15,7 +15,7 @@ export default function Home() {
             <h3 className="card-title fw-bold trans-flag-text">💜 Howdey! ^.^ 💜</h3>
             <div className="d-flex justify-content-center mt-4">
               <Image
-                src="/me.jpg"
+                src="/me.webp"
                 alt="Square Avatar"
                 width={250}
                 height={250}

@@ -1,6 +1,6 @@
 /* 🌑 Global Dark Theme */
 :root {
-  --background: #000000;
+  --background: url('/background.webp') no-repeat center center/cover;
   --foreground: #ff69b4;
   --card-bg: #171717;
   --card-text: #ededed;
@@ -60,7 +60,7 @@ margin-bottom: -500px;
   margin-bottom: 100px;
   overflow: hidden;
   border-radius: 12px;
-  background: #000;
+  background: transparent;
   box-shadow: none; /* Removed border glow */
 }
 
@@ -239,7 +239,9 @@ audio {
   background-color: var(--button-hover) !important;
   color: #fff !important;
   border-color: var(--button-hover) !important;
-}/* 🌈 Trans Flag Text */
+}
+
+/* 🌈 Trans Flag Text */
 .trans-flag-text {
   background: linear-gradient(
     90deg,
@@ -254,6 +256,7 @@ audio {
   display: inline-block; /* Ensures proper rendering */
   font-weight: bold; /* Optional: Make it pop */
 }
+
 /* 🌟 Track List Item Colors */
 .list-group-item {
   background-color: var(--card-bg) !important;
@@ -436,7 +439,7 @@ body.starry-background::after {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('/background.jpg') no-repeat center center/cover;
+  background: url('/background.webp') no-repeat center center/cover;
   z-index: -1; /* Ensure it stays behind everything */
 }
 
