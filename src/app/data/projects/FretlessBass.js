@@ -17,7 +17,7 @@ export default function ProjectOne({ onClick }) {
 
       <p>SO WE ROLLED THE DICE ON MYSTERY NECK WITH NO MEASURMENTS OR INFORMATION LISTED OTHER THAN IT MIGHT FIT A 5 STRING JAZZ BASS BODY LETS FUCKING GOOOOOO 🎲</p>
       <Image
-        src={"projects/bass/start.jpg"}
+        src={"/projects/bass/start.jpg"}
         alt="old bass neck and new bass neck side by side"
         width={400}
         height={400}
@@ -35,35 +35,35 @@ export default function ProjectOne({ onClick }) {
         i had one years and years ago but i sold it for travel money at the time lol</p>
 
       <Image
-        src={"projects/bass/pre-epoxy.jpg"}
+        src={"/projects/bass/pre-epoxy.jpg"}
         alt="Bass with details before epoxy pour"
         width={400}
         height={400}
         className="img-fluid rounded mb-3"
       />
       <Image
-        src={"projects/bass/epour1.jpg"}
+        src={"/projects/bass/epour1.jpg"}
         alt=""
         width={400}
         height={400}
         className="img-fluid rounded mb-3"
       />
       <Image
-        src={"projects/bass/epour2_head.jpg"}
+        src={"/projects/bass/epour2_head.jpg"}
         alt=""
         width={400}
         height={400}
         className="img-fluid rounded mb-3"
       />
       <Image
-        src={"projects/bass/epour2.jpg"}
+        src={"/projects/bass/epour2.jpg"}
         alt=""
         width={400}
         height={400}
         className="img-fluid rounded mb-3"
       />
       <Image
-        src={"projects/bass/epour2.jpg"}
+        src={"/projects/bass/epour2.jpg"}
         alt=""
         width={400}
         height={400}
@@ -85,7 +85,7 @@ export default function ProjectOne({ onClick }) {
         <h5 className="card-title">{project.title}</h5>
         <p className="card-text">{project.shortDescription}</p>
         <Image
-        src={"projects/bass/epour2_head.jpg"}
+        src={"/projects/bass/epour2_head.jpg"}
         alt=""
         width={400}
         height={400}

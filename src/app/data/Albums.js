@@ -4,7 +4,7 @@ const albums = [
     name: 'Stones / Darts',
     recordedYear: 2024,
     writtenYear: 2024,
-    cover: 'music/darts_stones/cover.png',
+    cover: '/music/darts_stones/cover.png',
     details: 'A recent full recording of an old ashmut song, ' +
       'an acoustic demo of a song i wrote this year, and an acoustic cover of a song i really like',
     tracks: [
@@ -25,7 +25,7 @@ const albums = [
     name: 'Bent Cathode',
     recordedYear: 2024,
     writtenYear: 2014,
-    cover: 'music/bent_cathode/cover.png',
+    cover: '/music/bent_cathode/cover.png',
     details: 'Recent recordings of a few songs from BADCROWVIBES times',
     tracks: [
       { title: 'Fumble', file: "music/bent_cathode/Fumble.mp3" },
@@ -47,7 +47,7 @@ const albums = [
     name: 'BADCROWVIBES - Live',
     recordedYear: 2014,
     writtenYear: 2012,
-    cover: 'music/bcv/cover.png',
+    cover: '/music/bcv/cover.png',
     details: 'A recording of a live show from the folk punk times. Feat Lora Calvert on the ukelele and backup vocals',
 
     tracks: [
@@ -73,7 +73,7 @@ const albums = [
     name: 'Odds and ends. Volume 1',
     recordedYear: 2015,
     writtenYear: 2012,
-    cover: 'music/oo1/cover.png',
+    cover: '/music/oo1/cover.png',
      details: 'TBR: Waiting on license for a cover check back her later for links!',
     links: {
       appleMusic: null,
@@ -88,7 +88,7 @@ const albums = [
     name: 'Odds and ends. Volume 2',
     recordedYear: 2013,
     writtenYear: 2011,
-    cover: 'music/oo2/cover.png',
+    cover: '/music/oo2/cover.png',
      details: 'To lazy to post all the songs here + github pages have limited storage /r/n'+
      'so check out the links!',
     links: {
