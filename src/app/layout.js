@@ -26,7 +26,10 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
+        <div className="starry-background">
         {children}
+        </div>
+       
       </body>
     </html>
   );

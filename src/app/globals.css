@@ -278,3 +278,74 @@ body::before {
 canvas {
   background: transparent !important;
 }
+
+/* 🌟 Starry Background Animation */
+body.starry-background {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* 🌠 Create animated stars with pseudo-elements */
+body.starry-background::before,
+body.starry-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 🌌 Layer 1: Small twinkling stars */
+body.starry-background::before {
+  background: 
+    radial-gradient(1px 1px at 20% 30%, #ffffff, transparent),
+    radial-gradient(1px 1px at 80% 50%, #ffffff, transparent),
+    radial-gradient(1px 1px at 60% 70%, #ffffff, transparent),
+    radial-gradient(1px 1px at 40% 20%, #ffffff, transparent);
+  background-size: 200px 200px;
+  animation: twinkle 10s infinite alternate;
+}
+
+/* 🌠 Layer 2: Larger glistening stars */
+body.starry-background::after {
+  background: 
+    radial-gradient(2px 2px at 10% 40%, #fff, transparent),
+    radial-gradient(2px 2px at 70% 60%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 30% 90%, #fff, transparent);
+  background-size: 300px 300px;
+  animation: twinkle 15s infinite alternate-reverse;
+}
+
+/* ✨ Twinkle Animation */
+@keyframes twinkle {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(0px);
+  }
+}
+
+/* 🌟 Content Wrapper with Slight Glow */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.85); /* Slight dark overlay for better contrast */
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1);
+}
