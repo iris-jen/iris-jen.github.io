@@ -5,6 +5,7 @@ import FretlessBass from '../data/projects/FretlessBass';
 
 import ProjectDetailsModal from '../components/ProjectDetailsModal';
 
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -27,6 +28,7 @@ export default function Projects() {
           <div className="col-md-6 col-lg-4 mb-4">
             <FretlessBass onClick={openModal} />
           </div>
+  
 
         </div>
       </div>
