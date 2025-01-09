@@ -29,7 +29,6 @@ export default function Projects() {
             <FretlessBass onClick={openModal} />
           </div>
   
-
         </div>
       </div>
       <ProjectDetailsModal show={showModal} onClose={closeModal} project={selectedProject} />
