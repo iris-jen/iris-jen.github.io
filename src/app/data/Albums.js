@@ -74,13 +74,14 @@ const albums = [
     recordedYear: 2015,
     writtenYear: 2012,
     cover: '/music/oo1/cover.webp',
-     details: 'TBR: Waiting on license for a cover check back her later for links!',
+     details: 'First part of a comp of some old stuff. To lazy to post all the songs here + github pages have limited storage /r/n'+
+     'so check out the links!',
     links: {
       appleMusic: null,
-      spotify: null,
-      itunes: null,
-      youtubeMusic: null,
-      deezer: null
+      spotify: "https://open.spotify.com/album/6BHgDeK86etfW3bPhysO6s",
+      itunes: "https://geo.music.apple.com/album/odds-and-ends-volume-1/1788977728",
+      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_n3AaG95ccPtI0OZL6XzST2bkbmydXbH0c",
+      deezer: "https://www.deezer.com/album/693459451"
     }
   },
   {
@@ -95,7 +96,7 @@ const albums = [
       appleMusic: "https://geo.music.apple.com/album/odds-and-ends-volume-2/1787590246",
       spotify: "https://open.spotify.com/album/4K1jv7LczuuTmY23yTyAa2",
       itunes: null,
-      youtubeMusic: null,
+      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_n3AaG95ccPtI0OZL6XzST2bkbmydXbH0c",
       deezer: "https://open.qobuz.com/album/inyy73kad65cc"
     }
   }
