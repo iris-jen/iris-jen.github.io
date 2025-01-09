@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import FretlessBass from '../data/projects/FretlessBass';
-
+import Quadrafucker from '../data/projects/Quadrafucker';
 import ProjectDetailsModal from '../components/ProjectDetailsModal';
-
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -28,7 +27,9 @@ export default function Projects() {
           <div className="col-md-6 col-lg-4 mb-4">
             <FretlessBass onClick={openModal} />
           </div>
-  
+          <div className="col-md-6 col-lg-4 mb-4">
+            <Quadrafucker onClick={openModal} />
+          </div>
         </div>
       </div>
       <ProjectDetailsModal show={showModal} onClose={closeModal} project={selectedProject} />
