@@ -52,7 +52,7 @@ export default function Home() {
             </div>
             <div className="mt-3">
               <a
-                href="/music"
+                href="/projects"
                 className="btn btn-outline-light fw-bold"
               >
                 🛠️<b className="trans-flag-text">Projects</b>
