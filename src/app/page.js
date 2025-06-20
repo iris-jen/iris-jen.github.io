@@ -70,21 +70,9 @@ export default function Home() {
               <a href="https://github.com/iris-jen" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
                 <i className="bi bi-github"></i>
               </a>
-              <a href="https://www.instagram.com/iris_jennison_/" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
-                <i className="bi bi-instagram"></i>
-              </a>
-              <a href="https://bsky.app/profile/irisjen.bsky.social" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
-                <i className="bi bi-cloud"></i>
-              </a>
-              <a href="https://discordapp.com/users/_iris_j" target="_blank" className="btn btn-outline-light rounded-circle p-4 trans-flag-text">
-                <i className="bi bi-discord"></i>
-              </a>
             </div>
           </div>
         </div>
-
-     
-      
     </>
   );
 }
