@@ -61,11 +61,11 @@ const albums = [
 
     ],
     links: {
-      appleMusic: 'https://geo.music.apple.com/album/badcrowvibes-feat-lora-calvert-live/1786529323',
-      spotify: 'https://open.spotify.com/album/6MXJ6VvO7bUOs9ZFYF1Sis',
-      itunes: null,
-      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_mQCeT1lu36PDzQlJ24g1sFjN-nFTsec3Q",
-      deezer: 'https://www.deezer.com/album/686326691'
+      appleMusic: 'https://music.apple.com/ca/album/1786529323?app=music&at=1l3vpUI&ct=LFV_6760c461615808f84bfaeac6a8491cca&itscg=30440&itsct=catchall_p1&lId=211804599&cId=none&sr=1&src=Linkfire&ls=1',
+      spotify: 'https://open.spotify.com/album/6MXJ6VvO7bUOs9ZFYF1Sis?go=1',
+      itunes: "https://music.apple.com/ca/album/1786529323?app=itunes&at=1l3vpUI&ct=LFV_6760c461615808f84bfaeac6a8491cca&itscg=30440&itsct=catchall_p3&lId=211804599&cId=none&sr=3&src=Linkfire&ls=1",
+      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_mQCeT1lu36PDzQlJ24g1sFjN-nFTsec3Q&src=Linkfire&lId=59afbd88-98cb-4f45-aeb1-d48f1179c8c6&cId=d3d58fd7-4c47-11e6-9fd0-066c3e7a8751",
+      deezer: 'https://www.deezer.com/album/686326691?app_id=140685&utm_source=partner_linkfire&utm_campaign=6760c461615808f84bfaeac6a8491cca&utm_medium=Original&utm_term=prod&utm_content=album-686326691'
     }
   },
   {
